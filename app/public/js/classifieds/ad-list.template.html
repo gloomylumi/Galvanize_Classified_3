@@ -1,0 +1,39 @@
+<div style="max-width: 800px;">
+  <div>
+  <!-- sorting menus and stuff -->
+    <label for="sort-by">Sort by:</label>
+    <select class="" name="sort-by" ng-model="valueToSortBy">
+      <option value="-created_at">Most Recent</option>
+      <option value="created_at">Oldest</option>
+      <option value="price">Price - Low to High</option>
+      <option value="-price">Price - High to Low</option>
+    </select>
+    <input placeholder="🔎" ng-model="searchText">
+  </div>
+  <div>
+    <a ui-sref="adList.newAd">New Ad</a>
+  </div>
+  <div ui-view></div>
+  <div>
+    <div ng-repeat="ad in $ctrl.ads | filter : searchText | orderBy : valueToSortBy">
+      <div>
+        <h2 style="display: inline;">{{ad.title}}</h2>
+        <a href="#" ng-click="$ctrl.deleteAd($event,ad)" style="float: right;">❌</a>
+      </div>
+      <div>
+        <div>
+          <img style="width: 300px;" ng-src="{{ad.item_image}}" alt="">
+          <a href="#" ng-click="$ctrl.editAd($event,ad)">Edit</a>
+        </div>
+        <div>
+          <p>Posted <span am-time-ago="ad.created_at"></span></p>
+          <p>Description: {{ad.description}}</p>
+          <p>Price: ${{ad.price}}</p>
+        </div>
+      </div>
+
+
+      <hr>
+    </div>
+</div>
+</div>

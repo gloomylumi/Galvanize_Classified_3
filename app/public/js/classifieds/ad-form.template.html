@@ -1,0 +1,16 @@
+<form name="ad-form"  ng-submit="$ctrl.submitForm()" class="ad-form">
+  <label for="title">Title:</label>
+  <input type="text" name="title" ng-model="$ctrl.adForm.title" required>
+
+  <label for="description">Description:</label>
+  <input type="text" name="description" ng-model="$ctrl.adForm.description" required>
+
+  <label for="price">Price:</label>
+  <input type="number" name="price" ng-model="$ctrl.adForm.price" required>
+
+  <label for="item-image">Image url:</label>
+  <input type="url" name="item-image" ng-model="$ctrl.adForm.item_image" required>
+
+
+  <input type="submit" name="submit">
+</form>
